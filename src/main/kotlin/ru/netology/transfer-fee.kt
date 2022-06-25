@@ -18,7 +18,7 @@ fun main() {
     val typeAccount = TypeAccount.Mastercard
 
     val result = calculateTransferFee(amountTransfer, amountTransfersMonth, typeAccount)
-    println(result)
+    printResult(result)
 }
 
 fun calculateTransferFee(
@@ -36,5 +36,13 @@ fun calculateTransferFee(
             if (transferFee > MIN_TRANSFER_FEE) transferFee else MIN_TRANSFER_FEE
         }
         TypeAccount.VKPay -> 0
+    }
+}
+
+fun printResult(result: Int) {
+    if (result == 0) {
+        println("Без комиссии")
+    } else {
+        println("Комиссия составит ${result / 100} руб. ${result % 100} коп.")
     }
 }
